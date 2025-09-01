@@ -1,0 +1,4 @@
+---- TIM_CtrlPWMOutputs Matches (3 in 2 files) ----
+stm32f4xx_tim.c (D:\keil5_project\my_project\libraries\STM32F4xx_StdPeriph_Driver\src) line 2203 :       (#) Enable the Main Output using TIM_CtrlPWMOutputs(TIM1, ENABLE) 
+stm32f4xx_tim.c (D:\keil5_project\my_project\libraries\STM32F4xx_StdPeriph_Driver\src) line 2265 : void TIM_CtrlPWMOutputs(TIM_TypeDef* TIMx, FunctionalState NewState)
+stm32f4xx_tim.h (D:\keil5_project\my_project\libraries\STM32F4xx_StdPeriph_Driver\inc) line 1095 : void TIM_CtrlPWMOutputs(TIM_TypeDef* TIMx, FunctionalState NewState);
