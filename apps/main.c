@@ -71,65 +71,65 @@ int main(void)
 		
 //			sht20_getdata();
 //			systick_ms(1000);
-		 Flame_Check();
-//		 if (flag)
-//        {
-//            flag = 0;
-//            if (strcmp((char*)Data, "fan_change") == 0)
-//            {
-//                GPIO_ToggleBits(GPIOC, GPIO_Pin_6);
-//                printf("Fan is Change\r\n");
-//            }
-//            else if (strcmp((char*)Data, "motor_change") == 0)
-//            {
-//                GPIO_ToggleBits(GPIOC, GPIO_Pin_7);
-//                printf("Motor is Change\r\n");
-//            }
-//            else if (strcmp((char*)Data, "beep_change") == 0)
-//            {
-//                GPIO_ToggleBits(GPIOA, GPIO_Pin_15);
-//                printf("Beep is Change\r\n");
-//            }
-//            else if (strcmp((char*)Data, "led_change") == 0)
-//            {
-//                GPIO_ToggleBits(GPIOF, GPIO_Pin_8);
-//                printf("Led is Change\r\n");
-//            }
-//            else if (strcmp((char*)Data, "sit_down") == 0)
-//            {
-//                Sit();
-//                printf("Dog is Sitting\r\n");
-//            }
-//            else if (strcmp((char*)Data, "stand_up") == 0)
-//            {
-//                Stand();
-//                printf("Dog is Standing\r\n");
-//            }
-//            else if (strcmp((char*)Data, "run_go") == 0)
-//            {
-//                RunForward();
-//                printf("Dog is Running Forward\r\n");
-//            }
-//            else if (strcmp((char*)Data, "back_up") == 0)
-//            {
-//                RunBackward();  
-//                printf("Dog is Running Backward\r\n");
-//            }
-//						else if (strcmp((char*)Data, "weather") == 0)
-//            {
-//                sht20_getdata();
-//                printf("Get Weather\r\n");
-//            }
-//						else if (strcmp((char*)Data, "flame_check") == 0)
-//            {
-//                Flame_Check(); // 调用封装的火焰检测函数
-//            }
-//            else
-//            {
-//                printf("Unknown command: %s\r\n", Data);
-//            }
-//           
-//        }
+		 //Flame_Check();
+		 if (flag)
+        {
+            flag = 0;
+            if (strcmp((char*)Data, "fan_change") == 0)
+            {
+                GPIO_ToggleBits(GPIOC, GPIO_Pin_6);
+                printf("Fan is Change\r\n");
+            }
+            else if (strcmp((char*)Data, "motor_change") == 0)
+            {
+                GPIO_ToggleBits(GPIOC, GPIO_Pin_7);
+                printf("Motor is Change\r\n");
+            }
+            else if (strcmp((char*)Data, "beep_change") == 0)
+            {
+                GPIO_ToggleBits(GPIOA, GPIO_Pin_15);
+                printf("Beep is Change\r\n");
+            }
+            else if (strcmp((char*)Data, "led_change") == 0)
+            {
+                GPIO_ToggleBits(GPIOF, GPIO_Pin_8);
+                printf("Led is Change\r\n");
+            }
+            else if (strcmp((char*)Data, "sit_down") == 0)
+            {
+                Sit();
+                printf("Dog is Sitting\r\n");
+            }
+            else if (strcmp((char*)Data, "stand_up") == 0)
+            {
+                Stand();
+                printf("Dog is Standing\r\n");
+            }
+            else if (strcmp((char*)Data, "run_go") == 0)
+            {
+                RunForward();
+                printf("Dog is Running Forward\r\n");
+            }
+            else if (strcmp((char*)Data, "back_up") == 0)
+            {
+                RunBackward();  
+                printf("Dog is Running Backward\r\n");
+            }
+						else if (strcmp((char*)Data, "weather") == 0)
+            {
+                sht20_getdata();
+                printf("Get Weather\r\n");
+            }
+						else if (strcmp((char*)Data, "flame_check") == 0)
+            {
+                Flame_Check(); // 调用封装的火焰检测函数
+            }
+            else
+            {
+                printf("Unknown command: %s\r\n", Data);
+            }
+           
+        }
       
 		
 	} 
