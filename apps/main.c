@@ -242,7 +242,7 @@ int main(void)
 {
     systick_init(168);
     systick_ms(1000); //让外设反应
-    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
     Init_led();
     Init_beep();
     //Init_key();
