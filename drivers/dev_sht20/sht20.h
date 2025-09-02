@@ -4,6 +4,8 @@
 #include "systick.h"
 #include "iic.h"
 #include "oled.h"
+#include "FreeRTOS.h"
+#include "task.h"
 typedef struct{
 	uint8_t temp_h;
 	uint8_t temp_l;

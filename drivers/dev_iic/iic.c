@@ -51,9 +51,9 @@ void iic_start(void)
     iic_out();       // 设置 SDA 为输出模式
     SCL_H;           // 拉高 SCL
     SDA_H;           // 拉高 SDA
-    systick_us(5);   // 等待 5us，确保时序稳定
+    delay_us(5);   // 等待 5us，确保时序稳定
     SDA_L;           // SDA 从高到低，生成起始信号
-    systick_us(5);   // 等待 5us
+    delay_us(5);   // 等待 5us
     SCL_L;           // 拉低 SCL，完成起始条件
 }
 
@@ -64,9 +64,9 @@ void iic_stop(void)
     iic_out();       // 设置 SDA 为输出模式
     SDA_L;           // 拉低 SDA
     SCL_H;           // 拉高 SCL
-    systick_us(5);   // 等待 5us，确保时序稳定
+    delay_us(5);   // 等待 5us，确保时序稳定
     SDA_H;           // SDA 从低到高，生成停止信号
-    systick_us(5);   // 等待 5us
+    delay_us(5);   // 等待 5us
 }
 
 // 发送 I2C 应答信号（ACK）：主机拉低 SDA，表示确认
@@ -76,7 +76,7 @@ void iic_sendACK(void)
     iic_out();       // 设置 SDA 为输出模式
     SDA_L;           // 拉低 SDA，发送 ACK 信号
     SCL_H;           // 拉高 SCL，让从设备读取 ACK
-    systick_us(5);   // 等待 5us，确保时序
+    delay_us(5);   // 等待 5us，确保时序
     SCL_L;           // 拉低 SCL，完成 ACK 发送
 }
 
@@ -87,7 +87,7 @@ void iic_sendNoACK(void)
     iic_out();       // 设置 SDA 为输出模式
     SDA_H;           // 拉高 SDA，发送 NACK 信号
     SCL_H;           // 拉高 SCL，让从设备读取 NACK
-    systick_us(5);   // 等待 5us，确保时序
+    delay_us(5);   // 等待 5us，确保时序
     SCL_L;           // 拉低 SCL，完成 NACK 发送
 }
 
@@ -130,9 +130,9 @@ void iic_senddata(uint8_t data)
             SDA_L;       // 如果为 0，SDA 拉低
         }
         SCL_H;           // 拉高 SCL，让从设备读取数据
-        systick_us(1);   // 等待 1us，确保时序
+        delay_us(1);   // 等待 1us，确保时序
         SCL_L;           // 拉低 SCL，准备下一位
-        systick_us(1);   // 等待 1us
+        delay_us(1);   // 等待 1us
         data = data << 1; // 数据左移，准备发送下一位
     }
 }
@@ -153,9 +153,9 @@ uint8_t iic_readdata(uint8_t flag_ack)
         {
             read_data |= 0x01;  // 如果 SDA 为高，设置最低位为 1
         }
-        systick_us(1);   // 等待 1us，确保时序
+        delay_us(1);   // 等待 1us，确保时序
         SCL_L;           // 拉低 SCL，准备下一位
-        systick_us(1);   // 等待 1us
+        delay_us(1);   // 等待 1us
     }
     // 根据 flag_ack 参数发送 ACK 或 NACK
     if (flag_ack == ACK)

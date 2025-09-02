@@ -38,5 +38,16 @@
 .\objects\sht20.o: ..\drivers\dev_systick\systick.h
 .\objects\sht20.o: ..\drivers\dev_iic\iic.h
 .\objects\sht20.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\sht20.o: ..\drivers\dev_time\time.h
 .\objects\sht20.o: ..\drivers\drv_oled\oled.h
 .\objects\sht20.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\sht20.o: ..\freertos\include\FreeRTOS.h
+.\objects\sht20.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\sht20.o: ..\freertos\include\FreeRTOSConfig.h
+.\objects\sht20.o: ..\freertos\include\projdefs.h
+.\objects\sht20.o: ..\freertos\include\portable.h
+.\objects\sht20.o: ..\freertos\include\deprecated_definitions.h
+.\objects\sht20.o: ..\freertos\portable\RVDS\ARM_CM4F\portmacro.h
+.\objects\sht20.o: ..\freertos\include\mpu_wrappers.h
+.\objects\sht20.o: ..\freertos\include\task.h
+.\objects\sht20.o: ..\freertos\include\list.h
