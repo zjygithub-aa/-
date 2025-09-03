@@ -1,5 +1,7 @@
 #include "sg90.h"
 #include "usart.h"
+
+
 void TIM3_PWM_Init(void)
 {
     TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
@@ -71,7 +73,7 @@ void Sit(void)
     Servo_SetAngle(2, 0);  // 前 右
     Servo_SetAngle(3, 0);  // 后左
     Servo_SetAngle(4, 0);  // 后右
-    systick_ms(500);  // 延时确保动作完成
+    
 }
 	
 
@@ -82,49 +84,43 @@ void Stand(void)
     Servo_SetAngle(2, 90);  // 前右
     Servo_SetAngle(3, 90);  // 后左
     Servo_SetAngle(4, 90);  // 后右
-    systick_ms(500);  // 延时确保动作完成
+  
 }
 
 // 前奔：trot步态（对角腿同步）
-void RunForward(void)
+void RunForward(uint8_t step)
 {
-	while(!flag)
-	{
-    // 阶段1: 腿1和腿4抬腿 (90°), 腿2和腿3落地 (0°)
-    Servo_SetAngle(1, 90);
-    Servo_SetAngle(2, 0);
-    Servo_SetAngle(3, 0);
-    Servo_SetAngle(4, 90);
-    systick_ms(500);
-
-
-    // 阶段2: 腿2和腿3抬腿 (90°), 腿1和腿4落地 (0°)
-    Servo_SetAngle(1, 0);
-    Servo_SetAngle(2, 90);
-    Servo_SetAngle(3, 90);
-    Servo_SetAngle(4, 0);
-    systick_ms(500);
+	if (step == 0) {
+        // 阶段1: 腿1和腿4抬腿 (90°), 腿2和腿3落地 (0°)
+        Servo_SetAngle(1, 90);
+        Servo_SetAngle(2, 0);
+        Servo_SetAngle(3, 0);
+        Servo_SetAngle(4, 90);
+    } else {
+        // 阶段2: 腿2和腿3抬腿 (90°), 腿1和腿4落地 (0°)
+        Servo_SetAngle(1, 0);
+        Servo_SetAngle(2, 90);
+        Servo_SetAngle(3, 90);
+        Servo_SetAngle(4, 0);
+    }
 		
 	}
-}
+
 
 // 后退：反向trot步态
-void RunBackward(void)
+void RunBackward(uint8_t step)
 {
-	while(!flag)
-	{
-	// 阶段1: 腿2和腿3抬腿 (90°), 腿1和腿4落地 (0°)
-    Servo_SetAngle(1, 0);
-    Servo_SetAngle(2, 90);
-    Servo_SetAngle(3, 90);
-    Servo_SetAngle(4, 0);
-    systick_ms(500);
-
-    // 阶段2: 腿1和腿4抬腿 (90°), 腿2和腿3落地 (0°)
-    Servo_SetAngle(1, 90);
-    Servo_SetAngle(2, 0);
-    Servo_SetAngle(3, 0);
-    Servo_SetAngle(4, 90);
-    systick_ms(500);
-	}
+	if (step == 0) {
+        // 阶段1: 腿2和腿3抬腿
+        Servo_SetAngle(1, 0);
+        Servo_SetAngle(2, 90);
+        Servo_SetAngle(3, 90);
+        Servo_SetAngle(4, 0);
+    } else {
+        // 阶段2: 腿1和腿4抬腿
+        Servo_SetAngle(1, 90);
+        Servo_SetAngle(2, 0);
+        Servo_SetAngle(3, 0);
+        Servo_SetAngle(4, 90);
+    }
 }

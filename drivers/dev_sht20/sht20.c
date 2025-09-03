@@ -36,7 +36,7 @@ uint16_t sht20_temdata(void)
         iic_stop();  // 如果无应答，发送停止信号并返回错误
         return NOACK;  // 返回无应答错误码
     }
-    systick_ms(85);  // 等待85ms以确保SHT20完成温度测量（根据数据手册）
+    vTaskDelay(85);  // 等待85ms以确保SHT20完成温度测量（根据数据手册）
     data[0] = iic_readdata(ACK);   // 读取高8位数据并发送ACK
     data[1] = iic_readdata(NOACK); // 读取低8位数据并发送NACK
     iic_stop();  // 发送I2C停止信号
@@ -70,7 +70,7 @@ uint16_t sht20_humdata(void)
         iic_stop();  // 如果无应答，发送停止信号并返回错误
         return NOACK;  // 返回无应答错误码
     }
-    systick_ms(29);  // 等待29ms以确保SHT20完成湿度测量（根据数据手册）
+   vTaskDelay(29);  // 等待29ms以确保SHT20完成湿度测量（根据数据手册）
     data[0] = iic_readdata(ACK);   // 读取高8位数据并发送ACK
     data[1] = iic_readdata(NOACK); // 读取低8位数据并发送NACK
     iic_stop();  // 发送I2C停止信号
@@ -112,7 +112,7 @@ void sht20_getdata(void)
 
     // 更新OLED显示
     OLED_Refresh();
-		systick_ms(3000);
+		vTaskDelay(1000);
 		OLED_Clear();
 
 //    // 将温度值分解为各位数字以显示到数码管

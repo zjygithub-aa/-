@@ -5,5 +5,5 @@
 void systick_init(uint8_t systick);
 void systick_ms(uint16_t ms);
 void systick_us(uint32_t us);
-	
+void delay_us(u32 nus);
 #endif

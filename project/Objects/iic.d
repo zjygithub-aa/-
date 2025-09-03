@@ -37,3 +37,4 @@
 .\objects\iic.o: ..\libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h
 .\objects\iic.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\iic.o: ..\drivers\dev_systick\systick.h
+.\objects\iic.o: ..\drivers\dev_time\time.h

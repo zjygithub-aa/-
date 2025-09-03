@@ -3,6 +3,7 @@
 #include <stm32f4xx.h>
 #include <stdio.h>
 #include "systick.h"
+#include "time.h"
 #define SCL_H GPIO_SetBits(GPIOB,GPIO_Pin_6)
 #define SCL_L GPIO_ResetBits(GPIOB,GPIO_Pin_6)
 #define SDA_H GPIO_SetBits(GPIOB,GPIO_Pin_7)

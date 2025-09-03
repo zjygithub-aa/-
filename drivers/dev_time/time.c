@@ -42,3 +42,55 @@ void Init_TIM3(void)
     TIM_Cmd(TIM3, ENABLE);
 
 }
+
+
+void delay_init(void) 
+{
+    TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
+    
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
+    
+    TIM_TimeBaseStructure.TIM_Period = 83;
+    TIM_TimeBaseStructure.TIM_Prescaler = 0;
+    TIM_TimeBaseStructure.TIM_ClockDivision = 0;
+    TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
+    
+    TIM_TimeBaseInit(TIM4, &TIM_TimeBaseStructure);
+}                                    
+ 
+void tim4_delay_ms(uint16_t ms)
+{
+    while(ms > 0)
+    {
+        uint32_t chunk = (ms > 65) ? 65 : ms; // 单次最大65ms（防止uint16_t溢出）
+        
+        // 设置1us中断一次，累计chunk*1000次
+        TIM_SetAutoreload(TIM4, 84 - 1);
+        TIM_SetCounter(TIM4, 0);
+        TIM_Cmd(TIM4, ENABLE);
+        
+        for(uint32_t i = 0; i < chunk * 1000; i++)
+        {
+            while(!TIM_GetFlagStatus(TIM4, TIM_FLAG_Update));
+            TIM_ClearFlag(TIM4, TIM_FLAG_Update);
+        }
+        
+        TIM_Cmd(TIM4, DISABLE);
+        ms -= chunk;
+    }
+}   
+
+//延时nus
+//nus为要延时的us数.                                               
+void tim4_delay_us(u32 nus)
+{
+    u32 cnt;
+    cnt = nus;
+    TIM_Cmd(TIM4, ENABLE);
+    while(cnt--)
+    {
+        while(TIM_GetFlagStatus(TIM4, TIM_FLAG_Update) == RESET);
+        TIM_ClearFlag(TIM4, TIM_FLAG_Update);
+    }
+    TIM_Cmd(TIM4, DISABLE);
+}
